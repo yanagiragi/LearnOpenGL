@@ -41,23 +41,23 @@ int main()
 
 	Behaviour mono = Behaviour();
 	
-	mono.preProcessing();
+	mono.Start();
 
 	// render loop
 	while (!glfwWindowShouldClose(window))
 	{
 		// Deal Input
-		mono.processInput(window);
+		mono.Input(window);
 
 		// Main Render Function
-		mono.render();
+		mono.Update();
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
 
-	mono.postProcessing();
+	mono.Destroy();
 
 	// glfw: terminate, clearing all previously allocated GLFW resources.
 	glfwTerminate();

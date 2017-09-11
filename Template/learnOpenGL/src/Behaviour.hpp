@@ -42,31 +42,15 @@ class Behaviour
 		unsigned int fragmentShader;
 		unsigned int shaderProgram;
 
-
 		// Prepare data
-		void Behaviour::preProcessing()
+		void Behaviour :: Start()
 		{
-			int  success;
-			char infoLog[512];
-
 			Shader generator = Shader();
 
 			generator.CreateShader(vertexShader, GL_VERTEX_SHADER, vertexShaderSource);
 			generator.CreateShader(vertexShader, GL_FRAGMENT_SHADER, fragmentShaderSource);
 
-			// Link vertex & fragment
-			shaderProgram = glCreateProgram();
-			glAttachShader(shaderProgram, vertexShader);
-			glAttachShader(shaderProgram, fragmentShader);
-			glLinkProgram(shaderProgram);
-
-			glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-			if (!success) {
-				glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-				std::cout << "ERROR::SHADER::LINK_FAILED\n" << infoLog << std::endl;
-			}
-			glDeleteShader(vertexShader);
-			glDeleteShader(fragmentShader);
+			generator.CreateProgram(shaderProgram, 2, vertexShader, fragmentShader);
 
 			// VAO = vertex attribute object
 			glGenVertexArrays(1, &VAO);
@@ -96,7 +80,7 @@ class Behaviour
 
 		}
 
-		void Behaviour::render()
+		void Behaviour :: Update()
 		{
 			glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
@@ -107,7 +91,6 @@ class Behaviour
 			// Normal Mode
 			// glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-
 			// update the uniform of fragment shader
 			float time = glfwGetTime();
 			float greenValue = (sin(time) / 2.0f) + 0.5f;
@@ -116,20 +99,18 @@ class Behaviour
 			glUseProgram(shaderProgram);
 			glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
 
-
 			glBindVertexArray(VAO);
 			glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(unsigned int), GL_UNSIGNED_INT, 0);
 		}
 
 		// process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
-		// ---------------------------------------------------------------------------------------------------------
-		void processInput(GLFWwindow *window)
+		void Behaviour:: Input(GLFWwindow *window)
 		{
 			if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 				glfwSetWindowShouldClose(window, true);
 		}
 
-		void postProcessing()
+		void Behaviour :: Destroy()
 		{
 			glDeleteVertexArrays(1, &VAO);
 			glDeleteBuffers(1, &VBO);
