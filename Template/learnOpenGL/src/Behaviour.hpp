@@ -52,16 +52,14 @@ class Behaviour
 
 			generator.CreateProgram(shaderProgram, 2, vertexShader, fragmentShader);
 
-			// VAO = vertex attribute object
+			// VAO = vertex attribute object, 1 stands for one buffer
 			glGenVertexArrays(1, &VAO);
 			// VBO = vertex buffer object
-			// 1 stands for one buffer
 			glGenBuffers(1, &VBO);
 			// EBO = element buffer object
 			glGenBuffers(1, &EBO);
 
 			glBindVertexArray(VAO);
-
 			// vertex buffer type: GL_ARRAY_BUFFER
 			glBindBuffer(GL_ARRAY_BUFFER, VBO);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
