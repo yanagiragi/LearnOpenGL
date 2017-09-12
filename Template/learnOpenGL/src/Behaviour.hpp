@@ -48,7 +48,7 @@ class Behaviour
 			Shader generator = Shader();
 
 			generator.CreateShader(vertexShader, GL_VERTEX_SHADER, vertexShaderSource);
-			generator.CreateShader(vertexShader, GL_FRAGMENT_SHADER, fragmentShaderSource);
+			generator.CreateShader(fragmentShader, GL_FRAGMENT_SHADER, fragmentShaderSource);
 
 			generator.CreateProgram(shaderProgram, 2, vertexShader, fragmentShader);
 
