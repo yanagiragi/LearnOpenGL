@@ -8,6 +8,9 @@
 #include <iostream>
 #include <stdarg.h>
 
+#include <fstream>
+#include <string>
+
 #define ERROR_MESSAGE_LOG_SIZE 512
 
 class Shader
@@ -16,6 +19,7 @@ class Shader
 		int success;
 		char infoLog[ERROR_MESSAGE_LOG_SIZE];
 		
+		std::string LoadRawShader(const char *shaderPath);
 		bool CreateShader(unsigned int &shaderInstance, unsigned int shaderType, const GLchar* shaderSource);
 		bool CreateProgram(unsigned int &shaderProgramInstance, int n_args, ... );
 

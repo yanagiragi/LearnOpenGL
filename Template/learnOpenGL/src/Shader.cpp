@@ -1,5 +1,19 @@
 #include "Shader.h"
 
+std::string Shader::LoadRawShader(const char* shaderPath)
+{
+
+	std::ifstream infile(shaderPath);
+	std::string shader;
+	std::string line;
+	while (std::getline(infile, line))
+	{
+		shader += line + "\n";
+	}
+
+	return shader;
+}
+
 bool Shader::CreateShader(unsigned int &shaderInstance, unsigned int shaderType, const GLchar* shaderSource) {
 	
 	shaderInstance = glCreateShader(shaderType);

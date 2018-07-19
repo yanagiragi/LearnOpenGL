@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="headers\glad.c">
+      <Filter>headers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Behaviour.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Shader.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\Model.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Camera.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{daefbc24-44fb-4759-b438-40a391ddb324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers">
+      <UniqueIdentifier>{ea3ba478-42fc-4be8-85e4-e48670bdf0bf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
